@@ -8,7 +8,7 @@ public class Main {
 	    new StableMatching (),
 	    System.out,
 	    new java.util.Random (0L)
-	).test('A'); // Set internal call parameter to 'A', 'B', or 'C' depending on the chosen variant. 
+	).test('B'); // Set internal call parameter to 'A', 'B', or 'C' depending on the chosen variant. 
     }
 
 }

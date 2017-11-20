@@ -8,10 +8,9 @@ import java.util.List;
 
 public class StableMatching implements StableMatchingInterface {
 
-    //private int[] nOfSingleMen;
     private int[] nOfSingleGirls;
-    //private PriorityQueue<Pair> queueOfSingleMen;//gonna be used to pick the singlest group. This will be difficult to implement
-    private ArrayDeque<Integer>[] priorityMen;// only update is popping when we analyse a new man
+    private int[] womenAsked;
+    private Priority[] priorityMen;// only update is popping when we analyse a new man
     private int[][] priorityMen4Women;//list inversion of women Prefs, will stay unchanged. gives for G, M, the priority of M in G`s view, 0 being the best
     private int[][] mar;
     private PriorityQueue<Integer>[] pHusbands;//gives the priority of the husbands G is linked to. bigger priorities first
@@ -22,9 +21,9 @@ public class StableMatching implements StableMatchingInterface {
     	//this.nOfSingleMen = new int[MAX_CAPACITY];
     	this.nOfSingleGirls = new int[MAX_CAPACITY];
     	//this.queueOfSingleMen = new PriorityQueue<Pair>(Collections.reverseOrder());//we want many single guys first
-    	this.priorityMen = new ArrayDeque[MAX_CAPACITY];
+    	this.priorityMen = new Priority[MAX_CAPACITY];
     	for(int i = 0; i < MAX_CAPACITY; i++) 
-        	priorityMen[i] = new ArrayDeque<Integer>();
+        	priorityMen[i] = new Priority(MAX_CAPACITY);
     	this.priorityMen4Women = new int[MAX_CAPACITY][MAX_CAPACITY];
     	this.mar = new int[MAX_CAPACITY][MAX_CAPACITY];
     	this.pHusbands = new PriorityQueue[MAX_CAPACITY];
@@ -127,14 +126,12 @@ public class StableMatching implements StableMatchingInterface {
         this.nOfSingleGirls = womenGroupCount;
         this.mar = new int[m][w];
 
-        //System.out.println((System.nanoTime() - start)/1000000);
+        System.out.println((System.nanoTime() - start)/1000000);
         for(int i = 0; i < m; i++) {
         	priorityMen[i].clear();
-        	for(int j = 0; j < w; j++) {
-        		priorityMen[i].add(menPrefs[i][j]);
-        	}
+        	priorityMen[i].addAll(menPrefs[i]);
         }
-        ///System.out.println((System.nanoTime() - start)/1000000);
+        System.out.println((System.nanoTime() - start)/1000000);
         for(int i = 0; i < w; i++)
         	pHusbands[i].clear();
         //System.out.println((System.nanoTime() - start)/1000000);
