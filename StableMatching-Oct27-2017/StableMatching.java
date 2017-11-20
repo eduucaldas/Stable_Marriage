@@ -77,10 +77,10 @@ public class StableMatching implements StableMatchingInterface {
     	while(!singlesMen.isEmpty()) {
     		M = singlesMen.nextSinglest(); //target group of men
     		G = priorityMen[M].poll();//null if M asked every G, what shouldnt occur
-    		///System.out.println("M, G: " + M + ", " + G);
+    		System.out.println("M, G: " + M + ", " + G);
     		//lets make them ask first girls that are single, less trouble. and then the girls with guys in descending order
     		if(nOfSingleGirls[G]>0) askSingleGirls(M,G);//should update mar, nOfSingleMen, nOfSingleGirls,
-    		///singlesMen.display();
+    		display("mar", mar);
     		
     		
     		
@@ -146,5 +146,26 @@ public class StableMatching implements StableMatchingInterface {
         //System.out.println((System.nanoTime() - start)/1000000);
 
         
+	}
+	
+	public static void main(String[] args) {
+		int[] menGroupCount =
+		{12, 18, 15, 13};
+		int[] womenGroupCount =
+		{13, 17, 20, 8};
+		int[][] menPrefs = 
+		{{2, 3, 0, 1},
+		 {1, 3, 0, 2},
+		 {3, 0, 2, 1},
+		 {2, 1, 3, 0}};
+		 
+		int[][] womenPrefs ={
+		 {2, 3, 0, 1},
+		 {0, 1, 3, 2},
+		 {0, 3, 1, 2},
+		 {0, 3, 2, 1}};
+		StableMatching test = new StableMatching ();
+		int[][] mar = test.constructStableMatching(menGroupCount, womenGroupCount, menPrefs, womenPrefs);
+		test.display("mar", mar);
 	}
 }

@@ -16,8 +16,9 @@ public class Priority  {
 		//done in O(1)
 	}
 	public int poll() {
+		int polled = el[head];
 		head++;
-		return el[head-1];
+		return polled;
 	}
 	
 	public void addAll(int n[]) {
