@@ -8,7 +8,7 @@ import java.util.List;
 
 public class StableMatching implements StableMatchingInterface {
 
-    //additional structures
+	
     //private int[] nOfSingleMen;
     private int[] nOfSingleGirls;
     //private PriorityQueue<Pair> queueOfSingleMen;//gonna be used to pick the singlest group. This will be difficult to implement
@@ -38,8 +38,6 @@ public class StableMatching implements StableMatchingInterface {
     	mar[M][G] = Math.min(singlesMen.n(M), nOfSingleGirls[G]);
     	singlesMen.updatePartial(M, -mar[M][G]);
     	nOfSingleGirls[G] -= mar[M][G];
-    	
-    	
     }
     
     private void cheat(int M, int MCheated, int G, int n) {
@@ -58,7 +56,6 @@ public class StableMatching implements StableMatchingInterface {
     	    }
     	    System.out.println();
     	}
-    	
     }
     
     
