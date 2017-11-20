@@ -8,7 +8,6 @@ import java.util.List;
 
 public class StableMatching implements StableMatchingInterface {
 
-	
     //private int[] nOfSingleMen;
     private int[] nOfSingleGirls;
     //private PriorityQueue<Pair> queueOfSingleMen;//gonna be used to pick the singlest group. This will be difficult to implement

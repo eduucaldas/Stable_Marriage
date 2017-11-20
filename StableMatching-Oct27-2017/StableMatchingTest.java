@@ -44,7 +44,7 @@ public class StableMatchingTest {
 
     // Setting this flag causes us to abandon after the first failure.
 
-    public final static boolean STOP = false;
+    public final static boolean STOP = true;
 
     // These fields are used to hold the result produced by the matching
     // algorithm. One might think that they should be local variables of the
